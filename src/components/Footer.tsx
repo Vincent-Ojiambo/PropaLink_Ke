@@ -7,12 +7,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
-          <div className="flex items-center space-x-2 mb-4">
-            <div className="w-8 h-8 bg-gradient-hero rounded-md flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">P</span>
-            </div>
-            <span className="text-xl font-bold">PropaLink</span>
-          </div>
+            <Link to="/" className="flex items-center mb-4">
+              <img 
+                src="/propalink.png" 
+                alt="PropaLink Logo" 
+                className="h-8 w-auto"
+              />
+              <span className="text-xl font-bold ml-2">
+                <span className="text-background">Propa</span>
+                <span className="text-green-400">Link</span>
+              </span>
+            </Link>
             <p className="text-background/80 mb-4 max-w-md">
               Kenya's leading real estate platform. Find your perfect home, apartment, 
               or commercial property across all counties in Kenya.

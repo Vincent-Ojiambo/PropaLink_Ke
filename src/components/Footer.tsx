@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-foreground text-background py-12">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-foreground text-background">
+      {/* Main Footer */}
+      <div className="py-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-1 md:col-span-2">
@@ -51,18 +53,19 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Support</h3>
             <ul className="space-y-2">
               <li><Link to="/about" className="text-background/80 hover:text-background transition-colors">Help Center</Link></li>
-              <li><Link to="/about" className="text-background/80 hover:text-background transition-colors">Contact Us</Link></li>
-              <li><a href="#" className="text-background/80 hover:text-background transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-background/80 hover:text-background transition-colors">Privacy Policy</a></li>
+              <li><Link to="/about#contact" className="text-background/80 hover:text-background transition-colors">Contact Us</Link></li>
+              <li><Link to="/terms" className="text-background/80 hover:text-background transition-colors">Terms of Service</Link></li>
+              <li><Link to="/privacy" className="text-background/80 hover:text-background transition-colors">Privacy Policy</Link></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-background/20 mt-8 pt-8 text-center">
           <p className="text-background/60">
-            © 2024 PropaLink Kenya. All rights reserved. | Proudly serving all 47 counties of Kenya
+            2024 PropaLink Kenya. All rights reserved. | Proudly serving all 47 counties of Kenya
           </p>
         </div>
+      </div>
       </div>
     </footer>
   );

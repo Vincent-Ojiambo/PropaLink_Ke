@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-interface PropertyCardProps {
+export interface PropertyCardProps {
   id: string;
   title: string;
   location: string;
@@ -15,6 +16,7 @@ interface PropertyCardProps {
 }
 
 const PropertyCard = ({ 
+  id,
   title, 
   location, 
   price, 
@@ -25,6 +27,11 @@ const PropertyCard = ({
   image, 
   isForRent = true 
 }: PropertyCardProps) => {
+  const navigate = useNavigate();
+  
+  const handleViewDetails = () => {
+    navigate(`/properties/${id}`);
+  };
   return (
     <div className="bg-card rounded-xl shadow-property hover:shadow-elegant transition-all duration-300 hover:scale-105 overflow-hidden group">
       {/* Image */}
@@ -83,7 +90,11 @@ const PropertyCard = ({
 
         {/* Actions */}
         <div className="flex gap-2">
-          <Button variant="property" className="flex-1">
+          <Button 
+            variant="property" 
+            className="flex-1"
+            onClick={handleViewDetails}
+          >
             View Details
           </Button>
           <Button variant="outline" size="sm">

@@ -18,6 +18,9 @@ const Sell = () => {
     email: ""
   });
 
+  // Track if land is selected to conditionally show/hide fields
+  const isLand = formData.propertyType === 'land';
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission - would typically send to backend
@@ -114,7 +117,17 @@ const Sell = () => {
                 <select
                   name="propertyType"
                   value={formData.propertyType}
-                  onChange={handleInputChange}
+                  onChange={(e) => {
+                    handleInputChange(e);
+                    // Clear bedrooms and bathrooms when switching to land
+                    if (e.target.value === 'land') {
+                      setFormData(prev => ({
+                        ...prev,
+                        bedrooms: '',
+                        bathrooms: ''
+                      }));
+                    }
+                  }}
                   className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
                   required
                 >
@@ -128,58 +141,65 @@ const Sell = () => {
                 </select>
               </div>
 
-              {/* Bedrooms */}
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Bedrooms
-                </label>
-                <select
-                  name="bedrooms"
-                  value={formData.bedrooms}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
-                >
-                  <option value="">Select Bedrooms</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5+">5+</option>
-                </select>
-              </div>
+              {/* Bedrooms - Hidden for land */}
+              {!isLand && (
+                <>
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Bedrooms *
+                    </label>
+                    <select
+                      name="bedrooms"
+                      value={formData.bedrooms}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
+                      required={!isLand}
+                    >
+                      <option value="">Select Bedrooms</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5+">5+</option>
+                    </select>
+                  </div>
 
-              {/* Bathrooms */}
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
-                  Bathrooms
-                </label>
-                <select
-                  name="bathrooms"
-                  value={formData.bathrooms}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
-                >
-                  <option value="">Select Bathrooms</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5+">5+</option>
-                </select>
-              </div>
+                  {/* Bathrooms - Hidden for land */}
+                  <div>
+                    <label className="block text-sm font-medium text-foreground mb-2">
+                      Bathrooms *
+                    </label>
+                    <select
+                      name="bathrooms"
+                      value={formData.bathrooms}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
+                      required={!isLand}
+                    >
+                      <option value="">Select Bathrooms</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5+">5+</option>
+                    </select>
+                  </div>
+                </>
+              )}
 
-              {/* Area */}
+              {/* Area - Always visible but with dynamic placeholder */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">
-                  Area
+                  Area *
                 </label>
                 <input
                   type="text"
                   name="area"
                   value={formData.area}
                   onChange={handleInputChange}
-                  placeholder="e.g., 120 sqm or 2 acres"
+                  placeholder={isLand ? "e.g., 1/8 acre or 50x100ft" : "e.g., 120 sqm or 3,000 sqft"}
                   className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-foreground"
+                  required
                 />
               </div>
 

@@ -23,27 +23,25 @@ PropaLink is a modern real estate platform for Kenya, connecting property buyers
 
 ### Installation
 
-1. Clone the repository:
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Set up environment variables
+
+1. Create a `.env` file in the root directory:
    ```bash
-   git clone https://github.com/Vincent-Ojiambo/propalink.git
-   cd propalink
+   cp .env.example .env
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn
+2. Update the `.env` file with your Supabase credentials:
+   ```env
+   VITE_SUPABASE_URL=your_supabase_url_here
+   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
+   SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key_here
    ```
-
-3. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## 🛠️ Built With
 

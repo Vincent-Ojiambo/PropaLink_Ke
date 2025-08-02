@@ -8,7 +8,9 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "supabase:setup": "ts-node scripts/setup-supabase.ts",
+    "supabase:types": "supabase gen types typescript --project-id your-project-ref > src/types/database.types.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -40,6 +42,10 @@
     "@radix-ui/react-toggle-group": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.4",
     "@supabase/supabase-js": "^2.50.3",
+    "@supabase/cli": "^2.0.0",
+    "dotenv": "^16.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3",
     "@tanstack/react-query": "^5.56.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

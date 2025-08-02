@@ -1,8 +1,20 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { MapPin, User, Calendar, Search } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const About = () => {
+  const navigate = useNavigate();
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      navigate('/#contact');
+    }
+  };
   const stats = [
     { number: "10,000+", label: "Properties Listed" },
     { number: "5,000+", label: "Happy Customers" },
@@ -12,10 +24,10 @@ const About = () => {
 
   const team = [
     {
-      name: "Sarah Wanjiku",
+      name: "Vincent Ojiambo",
       role: "CEO & Founder",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop",
-      bio: "10+ years in Kenyan real estate market"
+      image: "/img.jpg",
+      bio: "Visionary leader with a passion for transforming Kenya's real estate market"
     },
     {
       name: "James Kimani",
@@ -40,7 +52,7 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-6">
-              About SafiHomes Kenya
+              About PropaLink Kenya
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
               We're revolutionizing the Kenyan real estate market by making property 
@@ -191,12 +203,20 @@ const About = () => {
             Join thousands of satisfied customers who found their perfect property through SafiHomes
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-background text-primary hover:bg-background/90 px-8 py-3 rounded-lg font-semibold shadow-soft hover:shadow-elegant transition-all duration-300">
+            <Button 
+              onClick={() => navigate('/properties')}
+              variant="hero" 
+              className="px-8 py-3 text-lg"
+            >
               Start Your Search
-            </button>
-            <button className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+            </Button>
+            <Button 
+              onClick={scrollToContact}
+              variant="outline"
+              className="px-8 py-3 text-lg border-2 border-primary-foreground text-foreground hover:bg-primary-foreground hover:text-primary"
+            >
               Contact Us
-            </button>
+            </Button>
           </div>
         </div>
       </section>

@@ -177,9 +177,12 @@ const FeaturedProperties = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="bg-primary text-primary-foreground hover:bg-primary-glow px-8 py-3 rounded-lg font-semibold shadow-soft hover:shadow-elegant transition-all duration-300 hover:scale-105">
+          <a 
+            href="/properties"
+            className="inline-block bg-primary text-primary-foreground hover:bg-primary-glow px-8 py-3 rounded-lg font-semibold shadow-soft hover:shadow-elegant transition-all duration-300 hover:scale-105"
+          >
             View All Properties
-          </button>
+          </a>
         </div>
       </div>
     </section>

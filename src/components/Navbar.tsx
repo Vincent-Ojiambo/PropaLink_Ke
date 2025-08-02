@@ -38,6 +38,7 @@ const Navbar = () => {
             <Link to="/buy" className="text-foreground hover:text-primary transition-colors">Buy</Link>
             <Link to="/sell" className="text-foreground hover:text-primary transition-colors">Sell</Link>
             <Link to="/about" className="text-foreground hover:text-primary transition-colors">About</Link>
+            <Link to="/contact" className="text-foreground hover:text-primary transition-colors">Contact</Link>
           </div>
 
           {/* Desktop Actions */}
@@ -83,11 +84,12 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border animate-slide-up">
             <div className="flex flex-col space-y-4">
-              <Link to="/" className="text-foreground hover:text-primary transition-colors">Home</Link>
-              <Link to="/rent" className="text-foreground hover:text-primary transition-colors">Rent</Link>
-              <Link to="/buy" className="text-foreground hover:text-primary transition-colors">Buy</Link>
-              <Link to="/sell" className="text-foreground hover:text-primary transition-colors">Sell</Link>
-              <Link to="/about" className="text-foreground hover:text-primary transition-colors">About</Link>
+              <Link to="/" className="block py-2 text-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>Home</Link>
+              <Link to="/rent" className="block py-2 text-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>Rent</Link>
+              <Link to="/buy" className="block py-2 text-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>Buy</Link>
+              <Link to="/sell" className="block py-2 text-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>Sell</Link>
+              <Link to="/about" className="block py-2 text-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>About</Link>
+              <Link to="/contact" className="block py-2 text-foreground hover:text-primary" onClick={() => setIsMenuOpen(false)}>Contact</Link>
               <div className="flex flex-col space-y-2 pt-4 border-t border-border">
                 {user ? (
                   <>
